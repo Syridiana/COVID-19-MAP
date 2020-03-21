@@ -13,138 +13,137 @@ function initMap()
     zoom: 3,
     styles: [
         {
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "hue": "#ff4400"
-                },
-                {
-                    "saturation": -68
-                },
-                {
-                    "lightness": -4
-                },
-                {
-                    "gamma": 0.72
-                }
-            ]
-        },
-        {
-            "featureType": "road",
-            "elementType": "labels.icon"
-        },
-        {
-            "featureType": "landscape.man_made",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "hue": "#0077ff"
-                },
-                {
-                    "gamma": 3.1
-                }
-            ]
-        },
-        {
-            "featureType": "water",
-            "stylers": [
-                {
-                    "hue": "#00ccff"
-                },
-                {
-                    "gamma": 0.44
-                },
-                {
-                    "saturation": -33
-                }
-            ]
-        },
-        {
-            "featureType": "poi.park",
-            "stylers": [
-                {
-                    "hue": "#44ff00"
-                },
-                {
-                    "saturation": -23
-                }
-            ]
-        },
-        {
-            "featureType": "water",
+            "featureType": "all",
             "elementType": "labels.text.fill",
             "stylers": [
                 {
-                    "hue": "#007fff"
-                },
-                {
-                    "gamma": 0.77
-                },
-                {
-                    "saturation": 65
-                },
-                {
-                    "lightness": 99
+                    "color": "#ffffff"
                 }
             ]
         },
         {
-            "featureType": "water",
+            "featureType": "all",
             "elementType": "labels.text.stroke",
             "stylers": [
                 {
-                    "gamma": 0.11
+                    "color": "#000000"
                 },
                 {
-                    "weight": 5.6
-                },
-                {
-                    "saturation": 99
-                },
-                {
-                    "hue": "#0091ff"
-                },
-                {
-                    "lightness": -86
+                    "lightness": 13
                 }
             ]
         },
         {
-            "featureType": "transit.line",
+            "featureType": "administrative",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#000000"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative",
+            "elementType": "geometry.stroke",
+            "stylers": [
+                {
+                    "color": "#144b53"
+                },
+                {
+                    "lightness": 14
+                },
+                {
+                    "weight": 1.4
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "color": "#08304b"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
             "elementType": "geometry",
             "stylers": [
                 {
-                    "lightness": -48
+                    "color": "#0c4152"
                 },
                 {
-                    "hue": "#ff5e00"
+                    "lightness": 5
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#000000"
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry.stroke",
+            "stylers": [
+                {
+                    "color": "#0b434f"
                 },
                 {
-                    "gamma": 1.2
+                    "lightness": 25
+                }
+            ]
+        },
+        {
+            "featureType": "road.arterial",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#000000"
+                }
+            ]
+        },
+        {
+            "featureType": "road.arterial",
+            "elementType": "geometry.stroke",
+            "stylers": [
+                {
+                    "color": "#0b3d51"
                 },
                 {
-                    "saturation": -23
+                    "lightness": 16
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#000000"
                 }
             ]
         },
         {
             "featureType": "transit",
-            "elementType": "labels.text.stroke",
+            "elementType": "all",
             "stylers": [
                 {
-                    "saturation": -64
-                },
+                    "color": "#146474"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [
                 {
-                    "hue": "#ff9100"
-                },
-                {
-                    "lightness": 16
-                },
-                {
-                    "gamma": 0.47
-                },
-                {
-                    "weight": 2.7
+                    "color": "#021019"
                 }
             ]
         }
@@ -194,7 +193,7 @@ async function renderData ()
                         lng: item.location.lng,
                     },
                     map,
-                    icon: './icon.png'
+                    icon: './icon1.png'
                 }
             );
             
