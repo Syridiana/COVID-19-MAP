@@ -193,7 +193,7 @@ async function renderData ()
                         lng: item.location.lng,
                     },
                     map,
-                    icon: './icon1.png'
+                    icon: './icon.png'
                 }
             );
             
