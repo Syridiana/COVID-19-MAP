@@ -260,3 +260,35 @@ async function renderData ()
         }
     });
 }
+
+async function getTotalData()
+{
+    const response = await fetch('https://coronavirus-19-api.herokuapp.com/all');
+    const data = await response.json();
+    return data;
+}
+
+(async function totalConfirmedCases()
+{
+    const $pCases = document.getElementById('confirmedCasesP');
+    const totalInfo = await getTotalData();
+    console.log(totalInfo);
+
+    $pCases.innerHTML = `${totalInfo.cases}`;
+})();
+
+(async function totalDeathsCases()
+{
+    const $pCases = document.getElementById('deathCasesP');
+    const totalInfo = await getTotalData();
+
+    $pCases.innerHTML = `${totalInfo.deaths}`;
+})();
+
+(async function totalRecoveredCases()
+{
+    const $pCases = document.getElementById('recoveredCasesP');
+    const totalInfo = await getTotalData();
+
+    $pCases.innerHTML = `${totalInfo.recovered}`;
+})();
