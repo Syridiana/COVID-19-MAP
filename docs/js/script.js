@@ -159,28 +159,84 @@ renderData();
 
 async function getData()
 {
-    //const response = await fetch(' https://coronavirus-19-api.herokuapp.com/countries');
     const response = await fetch('https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest');
+    const data = await response.json();
+    return data;
+}
+
+async function getDataTwo()
+{
+    const response = await fetch('https://coronavirus-19-api.herokuapp.com/countries');
     const data = await response.json();
     return data;
 }
 
 const info = new google.maps.InfoWindow();
 
-function renderInfoData(item)
-{ return `
-        <p> <strong>${item.provincestate} ${item.countryregion}</strong> </p>
-        <p>Confirmados: ${item.confirmed}</p>
-        <p>Muertos: ${item.deaths}</p>
-        <p>Recuperados: ${item.recovered}</p>
-        <p>Fecha actualizado: ${item.lastupdate}</p>
-    `
+function renderInfoData(item, boolean)
+{ 
+    let stringToRender;
+
+    if(boolean)
+    {
+        stringToRender = `
+            <p> <strong>${item.country}</strong> </p>
+            <p>Confirmados: ${item.cases}</p>
+            <p>Muertos: ${item.deaths}</p>
+            <p>Recuperados: ${item.recovered}</p>
+            <p>Casos críticos: ${item.critical}</p>
+            <p>Casos por millon: ${item.casesPerOneMillion}</p>
+            `;
+    }
+    else
+    {
+        stringToRender = `
+            <p> <strong>${item.provincestate} ${item.countryregion}</strong> </p>
+            <p>Confirmados: ${item.confirmed}</p>
+            <p>Muertos: ${item.deaths}</p>
+            <p>Recuperados: ${item.recovered}</p>
+            <p>Fecha actualizado: ${item.lastupdate}</p>
+            `;
+    }
+    
+    return stringToRender;
+}
+
+function RenderInfoCondition(item, dataTwo)
+{
+    dataTwo.some(element => {
+        if(item.provincestate === "")
+        {
+            if(item.countryregion === element.country)
+            {
+                if(element.cases >= item.confirmed)
+                {
+                    info.setContent(renderInfoData(element, true));    
+                    return element.country === item.countryregion;
+                }
+                else
+                {
+                    info.setContent(renderInfoData(item, false));
+                }
+            }
+            else
+            {
+                info.setContent(renderInfoData(item, false));
+            }
+        }
+        else
+        {
+            info.setContent(renderInfoData(item, false));
+        }
+    });
 }
 
 async function renderData ()
 {
     const data = await getData();
+    const dataTwo = await getDataTwo();
     console.log(data);
+    console.log(dataTwo);
     
     data.forEach(item => {
         if(item.confirmed)
@@ -195,12 +251,12 @@ async function renderData ()
                     map,
                     icon: './icon.png'
                 }
-            );
-            
+                );
+                
             marker.addListener('click', () => {
-                info.setContent(renderInfoData(item));
+                RenderInfoCondition(item, dataTwo);
                 info.open(map, marker);
-            })
-        }     
+            });
+        }
     });
 }
