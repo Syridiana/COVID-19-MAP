@@ -257,6 +257,7 @@ async function renderData ()
                 } else
                 {
                     tamaño = item.confirmed/500;
+                    
                 }
            
 
