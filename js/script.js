@@ -248,15 +248,16 @@ async function renderData ()
         {
             var tamaño;
 
-                if(item.confirmed > 100000)
+                if(item.confirmed > 30000)
                 {
                     tamaño = 150;
-                } else if (item.confirmed<10000)
-                {
+                } else if (item.confirmed<4000)
+                {   
+
                     tamaño = 20;
                 } else
                 {
-                    tamaño = item.confirmed/500;
+                    tamaño = item.confirmed/200;
                 }
            
 
