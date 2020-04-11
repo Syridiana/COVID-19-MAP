@@ -17,7 +17,7 @@ function initMap()
             "elementType": "labels.text.fill",
             "stylers": [
                 {
-                    "color": "#ffffff"
+                    "color": "#37616F"
                 }
             ]
         },
@@ -26,7 +26,7 @@ function initMap()
             "elementType": "labels.text.stroke",
             "stylers": [
                 {
-                    "color": "#000000"
+                    "color": "#F2F1EF"
                 },
                 {
                     "lightness": 13
@@ -47,7 +47,7 @@ function initMap()
             "elementType": "geometry.stroke",
             "stylers": [
                 {
-                    "color": "#144b53"
+                    "color": "#90ADC6"
                 },
                 {
                     "lightness": 14
@@ -62,7 +62,7 @@ function initMap()
             "elementType": "all",
             "stylers": [
                 {
-                    "color": "#08304b"
+                    "color": "#90ADC6"
                 }
             ]
         },
@@ -71,7 +71,7 @@ function initMap()
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#0c4152"
+                    "color": "#90e5e5"
                 },
                 {
                     "lightness": 5
@@ -83,7 +83,7 @@ function initMap()
             "elementType": "geometry.fill",
             "stylers": [
                 {
-                    "color": "#000000"
+                    "color": "#cecece"
                 }
             ]
         },
@@ -92,7 +92,7 @@ function initMap()
             "elementType": "geometry.stroke",
             "stylers": [
                 {
-                    "color": "#0b434f"
+                    "color": "#cecece"
                 },
                 {
                     "lightness": 25
@@ -104,7 +104,7 @@ function initMap()
             "elementType": "geometry.fill",
             "stylers": [
                 {
-                    "color": "#000000"
+                    "color": "#cecece"
                 }
             ]
         },
@@ -113,7 +113,7 @@ function initMap()
             "elementType": "geometry.stroke",
             "stylers": [
                 {
-                    "color": "#0b3d51"
+                    "color": "#cecece"
                 },
                 {
                     "lightness": 16
@@ -125,7 +125,7 @@ function initMap()
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#000000"
+                    "color": "#cecece"
                 }
             ]
         },
@@ -134,7 +134,7 @@ function initMap()
             "elementType": "all",
             "stylers": [
                 {
-                    "color": "#146474"
+                    "color": "#cecece"
                 }
             ]
         },
@@ -143,7 +143,7 @@ function initMap()
             "elementType": "all",
             "stylers": [
                 {
-                    "color": "#021019"
+                    "color": "#333652"
                 }
             ]
         }
@@ -172,6 +172,7 @@ async function getDataTwo()
 }
 
 const info = new google.maps.InfoWindow();
+
 
 function renderInfoData(item, boolean)
 { 
@@ -231,16 +232,41 @@ function RenderInfoCondition(item, dataTwo)
     });
 }
 
+
+
 async function renderData ()
 {
     const data = await getData();
     const dataTwo = await getDataTwo();
     console.log(data);
     console.log(dataTwo);
+
     
     data.forEach(item => {
+
         if(item.confirmed)
         {
+            var tamaño;
+
+                if(item.confirmed > 100000)
+                {
+                    tamaño = 150;
+                } else if (item.confirmed<10000)
+                {
+                    tamaño = 20;
+                } else
+                {
+                    tamaño = item.confirmed/500;
+                    
+                }
+           
+
+            var icon = {
+                     url: "icono2.png", // ur
+                      scaledSize: new google.maps.Size(tamaño, tamaño), // scaled size
+                    };
+
+
             const marker = new google.maps.Marker(
                 {
                     position: 
@@ -248,10 +274,12 @@ async function renderData ()
                         lat: item.location.lat,
                         lng: item.location.lng,
                     },
-                    map,
-                    icon: './icon.png'
+                    map: map,
+                    icon: icon
+
                 }
                 );
+
                 
             marker.addListener('click', () => {
                 RenderInfoCondition(item, dataTwo);
