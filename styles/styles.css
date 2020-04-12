@@ -28,7 +28,7 @@ body {
 
 #confirmedCases {
     padding: 5%;
-    background-color: #F8C24B;
+    background-color: #36626F;
     width: 100%;
     height: 31vh;
     display: flex;
@@ -39,7 +39,7 @@ body {
 
 #deathCases {
     padding: 5%;
-    background-color: #F8C24B;
+    background-color: #36626F;
     width: 100%;
     height: 31vh;
     display: flex;

@@ -10,145 +10,146 @@ function initMap()
             lat: -10,
             lng: -60
         },
-    zoom: 3,
-    styles: [
-        {
-            "featureType": "all",
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "color": "#37616F"
-                }
-            ]
-        },
-        {
-            "featureType": "all",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "color": "#F2F1EF"
-                },
-                {
-                    "lightness": 13
-                }
-            ]
-        },
-        {
-            "featureType": "administrative",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#000000"
-                }
-            ]
-        },
-        {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#90ADC6"
-                },
-                {
-                    "lightness": 14
-                },
-                {
-                    "weight": 1.4
-                }
-            ]
-        },
-        {
-            "featureType": "landscape",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "color": "#90ADC6"
-                }
-            ]
-        },
-        {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#90e5e5"
-                },
-                {
-                    "lightness": 5
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#cecece"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#cecece"
-                },
-                {
-                    "lightness": 25
-                }
-            ]
-        },
-        {
-            "featureType": "road.arterial",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#cecece"
-                }
-            ]
-        },
-        {
-            "featureType": "road.arterial",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#cecece"
-                },
-                {
-                    "lightness": 16
-                }
-            ]
-        },
-        {
-            "featureType": "road.local",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#cecece"
-                }
-            ]
-        },
-        {
-            "featureType": "transit",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "color": "#cecece"
-                }
-            ]
-        },
-        {
-            "featureType": "water",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "color": "#333652"
-                }
-            ]
-        }
-    ]
-});
+        zoom: 3,
+        styles:
+        [
+            {
+                "featureType": "all",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "color": "#37616F"
+                    }
+                ]
+            },
+            {
+                "featureType": "all",
+                "elementType": "labels.text.stroke",
+                "stylers": [
+                    {
+                        "color": "#F2F1EF"
+                    },
+                    {
+                        "lightness": 13
+                    }
+                ]
+            },
+            {
+                "featureType": "administrative",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#000000"
+                    }
+                ]
+            },
+            {
+                "featureType": "administrative",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                    {
+                        "color": "#90ADC6"
+                    },
+                    {
+                        "lightness": 14
+                    },
+                    {
+                        "weight": 1.4
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "color": "#90ADC6"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#90e5e5"
+                    },
+                    {
+                        "lightness": 5
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#cecece"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                    {
+                        "color": "#cecece"
+                    },
+                    {
+                        "lightness": 25
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#cecece"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                    {
+                        "color": "#cecece"
+                    },
+                    {
+                        "lightness": 16
+                    }
+                ]
+            },
+            {
+                "featureType": "road.local",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#cecece"
+                    }
+                ]
+            },
+            {
+                "featureType": "transit",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "color": "#cecece"
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "color": "#333652"
+                    }
+                ]
+            }
+        ]
+    });
 
 return map;
 };
@@ -186,7 +187,8 @@ function renderInfoData(item, boolean)
             <p>Muertos: ${item.deaths}</p>
             <p>Recuperados: ${item.recovered}</p>
             <p>Casos críticos: ${item.critical}</p>
-            <p>Casos por millon: ${item.casesPerOneMillion}</p>
+            <p>Muertes de hoy: ${item.todayDeaths}</p>
+            <p>Muertes por millon: ${item.deathsPerOneMillion}</p>
             `;
     }
     else
@@ -246,22 +248,23 @@ async function renderData ()
 
         if(item.confirmed)
         {
-            var tamaño;
+            let tamaño;
 
-                if(item.confirmed > 100000)
-                {
-                    tamaño = 150;
-                } else if (item.confirmed<10000)
-                {
-                    tamaño = 20;
-                } else
-                {
-                    tamaño = item.confirmed/500;
-                    
-                }
+            if(item.confirmed > 100000)
+            {
+                tamaño = 154;
+            } 
+            else if (item.confirmed < 10000)
+            {
+                tamaño = 15,4;
+            } 
+            else
+            {
+                tamaño = item.confirmed/650;    
+            }
            
 
-            var icon = {
+            let icon = {
                      url: "icono2.png", // ur
                       scaledSize: new google.maps.Size(tamaño, tamaño), // scaled size
                     };
