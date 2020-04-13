@@ -17,7 +17,8 @@ function initMap()
             "elementType": "labels.text.fill",
             "stylers": [
                 {
-                    "color": "#37616F"
+                    "color": "#333551"
+
                 }
             ]
         },
@@ -26,7 +27,7 @@ function initMap()
             "elementType": "labels.text.stroke",
             "stylers": [
                 {
-                    "color": "#F2F1EF"
+                    "color": "#90ADC6"
                 },
                 {
                     "lightness": 13
@@ -43,17 +44,29 @@ function initMap()
             ]
         },
         {
-            "featureType": "administrative",
+            "featureType": "administrative.country",
             "elementType": "geometry.stroke",
             "stylers": [
                 {
-                    "color": "#90ADC6"
+                    "color": "#D3DEE8"
                 },
                 {
                     "lightness": 14
                 },
                 {
-                    "weight": 1.4
+                    "weight": 2
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.province",
+            "elementType": "geometry.stroke",
+            "stylers": [
+                {
+                    "color": "#BCCEDD"
+                },
+                {
+                    "weight": 2
                 }
             ]
         },
@@ -71,11 +84,8 @@ function initMap()
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#90e5e5"
+                    "color": "#BCCEDD"
                 },
-                {
-                    "lightness": 5
-                }
             ]
         },
         {
@@ -83,7 +93,7 @@ function initMap()
             "elementType": "geometry.fill",
             "stylers": [
                 {
-                    "color": "#cecece"
+                    "color": "#A6BDD1"
                 }
             ]
         },
@@ -92,11 +102,8 @@ function initMap()
             "elementType": "geometry.stroke",
             "stylers": [
                 {
-                    "color": "#cecece"
+                    "color": "#A6BDD1"
                 },
-                {
-                    "lightness": 25
-                }
             ]
         },
         {
@@ -104,7 +111,7 @@ function initMap()
             "elementType": "geometry.fill",
             "stylers": [
                 {
-                    "color": "#cecece"
+                    "color": "#A6BDD1"
                 }
             ]
         },
@@ -113,11 +120,8 @@ function initMap()
             "elementType": "geometry.stroke",
             "stylers": [
                 {
-                    "color": "#cecece"
+                    "color": "#A6BDD1"
                 },
-                {
-                    "lightness": 16
-                }
             ]
         },
         {
@@ -125,7 +129,7 @@ function initMap()
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#cecece"
+                    "color": "#A6BDD1"
                 }
             ]
         },
@@ -134,7 +138,7 @@ function initMap()
             "elementType": "all",
             "stylers": [
                 {
-                    "color": "#cecece"
+                    "color": "#A6BDD1"
                 }
             ]
         },
@@ -143,7 +147,7 @@ function initMap()
             "elementType": "all",
             "stylers": [
                 {
-                    "color": "#333652"
+                    "color": "#162046"
                 }
             ]
         }
@@ -180,22 +184,36 @@ function renderInfoData(item, boolean)
 
     if(boolean)
     {
+
+    var numCases = Number(item.cases).toLocaleString('es');
+    var numDeaths = Number(item.deaths).toLocaleString('es');
+    var numRecovered = Number(item.recovered).toLocaleString('es');
+    var numCritical = Number(item.critical).toLocaleString('es');
+    var numCasesPerMillion = Number(item.casesPerOneMillion).toLocaleString('es');
+
+    
         stringToRender = `
-            <p> <strong>${item.country}</strong> </p>
-            <p>Confirmados: ${item.cases}</p>
-            <p>Muertos: ${item.deaths}</p>
-            <p>Recuperados: ${item.recovered}</p>
-            <p>Casos críticos: ${item.critical}</p>
-            <p>Casos por millon: ${item.casesPerOneMillion}</p>
+            <h3> ${item.country} </h3>
+            <p>------------------------------------------</p>
+            <p>Confirmados: ${numCases}</p>
+            <p>Muertos: ${numDeaths}</p>
+            <p>Recuperados: ${numRecovered}</p>
+            <p>Casos críticos: ${numCritical}</p>
+            <p>Casos por millon: ${numCasesPerMillion}</p>
             `;
     }
     else
     {
+    var numConfirmed = Number(item.confirmed).toLocaleString('es');
+    var numDeaths2 = Number(item.deaths).toLocaleString('es');
+    var numRecovered2 = Number(item.recovered).toLocaleString('es');
+
         stringToRender = `
-            <p> <strong>${item.provincestate} ${item.countryregion}</strong> </p>
-            <p>Confirmados: ${item.confirmed}</p>
-            <p>Muertos: ${item.deaths}</p>
-            <p>Recuperados: ${item.recovered}</p>
+            <h3>${item.provincestate} ${item.countryregion}</h3>
+            <p>------------------------------------------</p>
+            <p>Confirmados: ${numConfirmed}</p>
+            <p>Muertos: ${numDeaths2}</p>
+            <p>Recuperados: ${numRecovered2}</p>
             <p>Fecha actualizado: ${item.lastupdate}</p>
             `;
     }
@@ -248,21 +266,21 @@ async function renderData ()
         {
             var tamaño;
 
-                if(item.confirmed > 100000)
+                if(item.confirmed > 68000)
                 {
-                    tamaño = 150;
-                } else if (item.confirmed<10000)
+                    tamaño = 170;
+                } else if (item.confirmed<6000)
                 {
-                    tamaño = 20;
+                    tamaño = 15;
                 } else
                 {
-                    tamaño = item.confirmed/500;
+                    tamaño = item.confirmed/400;
                     
                 }
            
 
             var icon = {
-                     url: "icono2.png", // ur
+                     url: "icono2.png", // url
                       scaledSize: new google.maps.Size(tamaño, tamaño), // scaled size
                     };
 
