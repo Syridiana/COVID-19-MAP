@@ -200,6 +200,7 @@ function renderInfoData(item, boolean)
             <p>Recuperados: ${numRecovered}</p>
             <p>Casos críticos: ${numCritical}</p>
             <p>Casos por millon: ${numCasesPerMillion}</p>
+            <p>Muertes por millon: ${item.deathsPerOneMillion}</p>
             `;
     }
     else
@@ -250,8 +251,6 @@ function RenderInfoCondition(item, dataTwo)
     });
 }
 
-
-
 async function renderData ()
 {
     const data = await getData();
@@ -264,7 +263,7 @@ async function renderData ()
 
         if(item.confirmed)
         {
-            var tamaño;
+            let tamaño;
 
                 if(item.confirmed > 68000)
                 {
@@ -274,13 +273,12 @@ async function renderData ()
                     tamaño = 15;
                 } else
                 {
-                    tamaño = item.confirmed/400;
-                    
+                    tamaño = item.confirmed/400;      
                 }
-           
 
             var icon = {
                      url: "icono2.png", // url
+
                       scaledSize: new google.maps.Size(tamaño, tamaño), // scaled size
                     };
 
